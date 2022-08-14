@@ -1,3 +1,5 @@
+
+
 --- DAILY COUNTS (daily count of orders) ---
 --- convert timestamps to dates, and count the Orders Per Date ---
 select DATE(ordered_at), count(1)
@@ -46,11 +48,3 @@ order by 2 desc;
 
 >> PRODUCT SUM CONSLUSION: kale smoothies are not bringing in the money. And from the analysis, we found what
 might be a trend - several of the other low performing products are also smoothies. <<
-
-
----------------------------------------------------------------------------------------------
-
-
-
-
-

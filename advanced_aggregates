@@ -1,5 +1,3 @@
-
-
 --- DAILY COUNTS (daily count of orders) ---
 --- convert timestamps to dates, and count the Orders Per Date ---
 select DATE(ordered_at), count(1)

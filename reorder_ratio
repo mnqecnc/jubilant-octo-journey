@@ -1,0 +1,26 @@
+--- REORDER RATES ---
+REORDER RATE - ratio of the total number of orders to the number of people making those orders
+> low ratio - more of the orders are first purchases
+
+REORDER RATIO - total orders per product
+
+1. count the distinct order_ids in the order_items table 
+select name, COUNT(DISTINCT order_id)
+from order_items
+group by 1
+order by 1;
+
+2. number of people making the orders
+--- join in the orders table and count unique values in the delivered_to field, and sort by the reorder_rate ---
+select name, round(1.0 * count(distinct order_id) /
+  count(distinct orders.delivered_to), 2) as reorder_rate <---  denominator counts the distinct values of the orders table’s delivered_to field (orders.delivered_to).
+from order_items
+  join orders on
+    orders.id = order_items.order_id
+group by 1
+order by 2 desc;
+
+CONCLUSION: While smoothies aren’t making a lot of money for SpeedySpoon, they have a very high reorder rate. 
+That means these smoothie customers are strong repeat customers.
+Instead of recommending smoothies be taken off the menu, we should talk to the smoothie customers and see what they like so much about these smoothies. 
+There could be an opportunity here to expand the product line, or get other customers as excited as these kale fanatics.
